@@ -6,6 +6,12 @@
 ul,ol,li{
     list-style: none;
 }
+a{
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline;
+}
 h1,h2,h3,h4,h5,h6{
     font-size: 16px;
     font-weight: normal;
@@ -113,7 +119,7 @@ section{
 }
 main{
     width: 980px;
-    height: 542px;  
+    height: 472px;  
     background: #fff;
     margin: 0 auto;
     padding:22px 24px;
@@ -129,6 +135,8 @@ section h1 span{
     font-size: 12px;
     float: right;
     font-weight: normal;
+    margin-top: 10px;
+    color: #666;
 }
 main form{
     float: left;
@@ -152,11 +160,57 @@ main form input{
     border: 1px solid #d6d6d6;
     border-radius:4px; 
     padding-left: 10px;
-    box-shadow:0px 1px 2px rgb(173, 166, 166) inset
+    box-shadow:0px 1px 2px rgb(173, 166, 166) inset;
+}
+form .warm a{
+    display: inline-block;
+    width: 136px;
+    height: 29px;
+    color:#0f67b4;
+    font-size: 11px;
+    line-height: 18px;
+}
+form .warm button{
+    width: 84px;
+    height: 35px;
+    border-radius: 5px;
+    background: #2595de;
+    float: right;
+    border: 0;
+    box-shadow:0px -1px  #0f67b4;
+    color: #fff;
+}
+form .warm button:hover{
+    background: #0070d3;
+    cursor: pointer;
+}
+
+.shadow{
+    float: left;
+    width: 4px;
+    height: 414px;
+    background: url(../images/images/shadow_03.jpg)
 }
 
 section .section-right{
     width: 342px;
     height: 347px;
     float: left;
+    padding:90px 0 056px;
+    margin-left: 60px;
 }
+.section-right p{
+    margin-bottom: 12px;
+}
+section .section-right li{
+    list-style: disc inside;
+    color: #666;
+    font-size: 15px;
+    padding-left: 10px;
+    line-height: 24px;
+}
+.section-right a{
+    color:#0f67b4;
+    font-size: 11px;           
+}
+ 
