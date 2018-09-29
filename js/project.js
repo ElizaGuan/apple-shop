@@ -4,7 +4,10 @@ var inProject = (function () {
             ele = this.ele;
             this.$nav = this.$('.down');
             this.$menu = this.$('.menu');
+            this.$last=this.$nav.lastElementChild;
+            console.log(this.$last)
             this.val=this.$menu.style.display;
+            this.flag=true;
             this.event();
         },
         event() {
@@ -12,17 +15,19 @@ var inProject = (function () {
             this.$nav.onclick = function (e) {
                 val=this.val;
                 val='none';
-                console.log(111)
+                // console.log(111)
                 e = e || window.event;
                 var target = e.target || e.srcElement;
                 if (target.nodeName === 'LI' && target.className === 'iconfont icon-gouwudai last_nav') {
-                    // _this.val=this.val;
-                    // val = 'block';
-                    _this.$menu.style.display='block';
+                    if(_this.flag){
+                        _this.$menu.style.display='block';
+                        _this.flag=false;
+                    }
+                    else{
+                        _this.$menu.style.display='none';  
+                        _this.flag=true;                              
+                    }
                 }
-            }
-            document.onmouseup = function () {
-                _this.$menu.style.display='none';                                
             }
         },
         $(id) {
