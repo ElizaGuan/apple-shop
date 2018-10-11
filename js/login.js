@@ -25,7 +25,6 @@ var login = (function () {
                 }
             }
             this.$password.oninput=function(){
-                debugger
                 if(_this.$password.value==''){
                     console.log(11)
                     _this.$password.style.background='rgb(253, 253, 170)'
@@ -47,19 +46,21 @@ var login = (function () {
                         _this.loginSuccess(data);
                     }
                 }
-                sendAjax('http://localhost:1234/10_1/apple-shop/php/login.php', params)
+                sendAjax('http://localhost:1234/apple-shop/php/login.php', params)
             }
         },
         $(id) {
             return document.querySelector(id);
         },
         loginSuccess: function (data) {
+            var email=localStorage.email || '';
             if (data.code == 200) {
                 document.cookie = "user-id=" + data.data.id;
                 document.cookie = "token=" + data.data.token;
                 localStorage.userImg = data.data.ataver;
                 //跳到成功登录的界面
-                location.href = `car.html?email=${this.$email.value}`;
+                // location.href = `car.html?email=${this.$email.value}`;
+                location.href = 'car.html';
                 localStorage.email=this.$email.value;
             } else {
                 this.$inpWarn.innerHTML = data.msg1;

@@ -4,15 +4,15 @@ var inProject = (function () {
             ele = this.ele;
             this.$nav = this.$('.down');
             this.$menu = this.$('.menu');
-            // this.$success = this.$('.success');
             this.$first = this.$nav.firstElementChild;
             this.$last = this.$nav.lastElementChild;
             this.val = this.$menu.style.display;
             this.flag = true;
+            this.$success = this.$('.success'); 
             this.event();
-            this.url = location.search.slice(1);
-            if (this.url != '') {
-                inProject.success();
+            // this.url = location.search.slice(1);
+            if (localStorage.email!= '') {
+                this.success();
             }
         },
         event() {
@@ -33,6 +33,9 @@ var inProject = (function () {
                     this.flag = _this.flag;
                 }
             }
+            this.$success.onclick=function(){
+                localStorage.setItem('email','');
+            }
             this.$first.onclick = function () {
                 location.href = 'index.html'
             }
@@ -49,23 +52,26 @@ var inProject = (function () {
         $(id) {
             return document.querySelector(id);
         },
-        success() {
-            this.url = this.getParams(this.url);
-            var email = this.url.email;
-            var $success = document.querySelector('.success');
-            var $welcome = document.querySelector('.welcome');            
-            console.log($success);
-            $welcome.innerHTML = `欢迎 ${email}`            
-            $success.innerHTML = `注销 ${email}`
-        },
-        getParams(url) {
-            var obj = {};
-            url = url.split('&');
-            for (var i = 0; i < url.length; i++) {
-                var str = url[i].split('=');
-                obj[str[0]] = str[1];
-            }
-            return obj;
+        // success() {
+        //     this.url = this.getParams(this.url);
+        //     var email = this.url.email;
+        //     var $success = document.querySelector('.success');
+        //     var $welcome = document.querySelector('.welcome');            
+        //     console.log($success);
+        //     $welcome.innerHTML = `欢迎 ${localStorage.email}`            
+        //     $success.innerHTML = `注销 ${localStorage.email}`
+        // },
+        // getParams(url) {
+        //     var obj = {};
+        //     url = url.split('&');
+        //     for (var i = 0; i < url.length; i++) {
+        //         var str = url[i].split('=');
+        //         obj[str[0]] = str[1];
+        //     }
+        //     return obj;
+        // }
+        success(){           
+            this.$success.innerHTML = `注销 ${localStorage.email}`
         }
     }
 }())

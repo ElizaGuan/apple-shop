@@ -34,7 +34,7 @@ var createID = (function () {
                         _this.checkID(data);
                     }
                 }
-                sendAjax('http://localhost:1234/10_1/apple-shop/php/checkEmail.php', params);
+                sendAjax('http://localhost:1234/apple-shop/php/checkEmail.php', params);
             }
             this.$password.oninput = function () {
                 _this.checkPassword()
@@ -75,7 +75,7 @@ var createID = (function () {
                         _this.createSuccess(data);
                     }
                 }
-                sendAjax('http://localhost:1234/10_1/apple-shop/php/createID.php', params);
+                sendAjax('http://localhost:1234/apple-shop/php/createID.php', params);
             }
         },
         checkID(data) {
