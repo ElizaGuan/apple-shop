@@ -1,0 +1,74 @@
+main{
+    margin-bottom: 10px;
+}
+.top{
+    width: 1262px;
+    height: 540px;
+    background: url(../images/iphone_03.png) no-repeat 150px 240px black;
+    overflow: hidden;
+    cursor: pointer;
+}
+.top div{
+    color: rgb(107, 158, 252);
+    margin: 0 530px;
+}
+.top p{
+    margin: 50px 520px;
+}
+.second{
+    background: url(../images/iphone_04.png) no-repeat 150px 240px black;
+    height: 582px ;
+}
+.third{
+    background: url(../images/apple_watch_series_4_medium.jpg) no-repeat 640px 0px  #fff;
+    height: 610px;
+}
+.third p{
+    margin: 220px 240px;
+}
+.third div{
+    color: rgb(107, 158, 252);
+    margin: -200px 250px;
+}
+
+
+
+.four{
+    width: 614px;
+    height: 580px;
+    background: url(../images/apple_music_medium.jpg) no-repeat;
+    background-size: 614px 580px;
+    overflow: hidden;
+    margin: 0px 10px;
+    text-align: center;
+}
+.more p{
+    margin: 50px 0px;
+}
+.more div{
+    margin: -50px 215px ;
+    font-size: 14px;
+}
+.more a{
+    color: rgb(247, 249, 253);
+}
+.left{
+    float: left;
+}
+.right{
+    background: url(../images/give_back_medium.jpg) no-repeat #fff;
+    background-size: 614px 580px;
+}
+.five{
+    background: url(../images/macbook_pro_performance_medium.jpg) no-repeat;
+    background-size: 614px 580px;
+    margin: 10px 10px;
+}
+.five a{
+    color: rgb(107, 158, 252);
+}
+.last{
+    background: url(../images/ipad_large.jpg) no-repeat 60px 220px;
+    /* background-size: 614px 580px; */
+    /* background: rgb(48, 209, 48) green */
+}
