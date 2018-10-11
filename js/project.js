@@ -5,6 +5,7 @@ var inProject = (function () {
             this.$nav = this.$('.down');
             this.$menu = this.$('.menu');
             this.$first = this.$nav.firstElementChild;
+            console.log(this.$('.down'))
             this.$last = this.$nav.lastElementChild;
             this.val = this.$menu.style.display;
             this.flag = true;
@@ -52,6 +53,9 @@ var inProject = (function () {
         $(id) {
             return document.querySelector(id);
         },
+        success(){           
+            this.$success.innerHTML = `注销 ${localStorage.email}`
+        }
         // success() {
         //     this.url = this.getParams(this.url);
         //     var email = this.url.email;
@@ -70,8 +74,6 @@ var inProject = (function () {
         //     }
         //     return obj;
         // }
-        success(){           
-            this.$success.innerHTML = `注销 ${localStorage.email}`
-        }
+        
     }
 }())
