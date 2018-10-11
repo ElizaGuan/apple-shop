@@ -26,6 +26,7 @@ var createID = (function () {
             this.$email.onchange = function () {
                 var params = {
                     data: {
+                        //默认get 请求
                         email: _this.$email.value
                     },
                     success: function (data) {
@@ -125,19 +126,19 @@ var createID = (function () {
             var reg4 = /^.*(?=.*[!@#$%^&*? ]).*$/
             var test4 = reg4.test(val)
             if (test1) {
-                this.$passli[1].style.color = 'rgb(48, 209, 48)';
+                this.$passli[1].className='true-li';
             } else {
-                this.$passli[1].style.color = '#5f5f60';
+                this.$passli[1].removeAttribute('class')
             }
             if (test2) {
-                this.$passli[2].style.color = 'rgb(48, 209, 48)';
+                this.$passli[2].className='true-li';                
             } else {
-                this.$passli[2].style.color = '#5f5f60';
+                this.$passli[2].removeAttribute('class')                
             }
             if (test3) {
-                this.$passli[0].style.color = 'rgb(48, 209, 48)';
+                this.$passli[0].className='true-li';                
             } else {
-                this.$passli[0].style.color = '#5f5f60';
+                this.$passli[0].removeAttribute('class')                
             }
             if (test1 || test2 || test3) {
                 this.listShow('33%', 'red', '弱');
@@ -158,12 +159,13 @@ var createID = (function () {
             var x = document.getElementsByTagName("input");
             for (var i = 0; i < x.length - 2; i++) {
                 if (x[i].value == "") {
-                    console.log(11)
                     x[i].nextElementSibling.style.display = 'block';
+                    // x[i].className='other-error';
                     document.body.scrollTop = document.documentElement.scrollTop = 0;
                     return false;// 有空值
                 } else {
                     x[i].nextElementSibling.style.display = 'none';
+                    // x[i].removeAttribute('class');
                 }
             }
         }

@@ -184,3 +184,11 @@ button{
     margin-top: 10px;
 }
 
+.true-li{
+    color:rgb(48, 209, 48);
+}
+.other-error{
+    background:rgb(250, 223, 227) ;
+    border: 1px solid red;
+    display: block;
+}
