@@ -59,6 +59,7 @@ header .menu{
     padding:0 20px;
     background: #fff;
     display: none;
+    z-index: 100;
 }
 header .menu .iconfont{
     display: inline;

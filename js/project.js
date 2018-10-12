@@ -5,7 +5,7 @@ var inProject = (function () {
             this.$nav = this.$('.down');
             this.$menu = this.$('.menu');
             this.$first = this.$nav.firstElementChild;
-            console.log(this.$('.down'))
+            // console.log(this.$('.down'))
             this.$last = this.$nav.lastElementChild;
             this.val = this.$menu.style.display;
             this.flag = true;
