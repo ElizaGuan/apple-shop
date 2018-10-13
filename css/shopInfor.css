@@ -61,8 +61,8 @@
 .fade button:hover{
     background:#888; 
     cursor: pointer;
-}
-button:focus{
+} */
+/* button:focus{
     outline:0;
 } */
 
@@ -117,35 +117,31 @@ button:focus{
 .first-title{
     height: 30px;
     width: 100%;
-    background: #eeecec;
+    background:  rgb(59, 119, 231);
     font-size: 12px;
     line-height: 30px;
     text-align: center;
+    position: relative;
+    top: -30px;
 }
 .first-title a{
     color: rgb(59, 119, 231)
 }
 
 
-.choose-slide{
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    clear: both;
-}
 .left-box,.right-box{
     width: 496px;
     height: 490px;
-    margin:0 4px;
     text-align: left;
     float: left;
 }
 .right-box{
     float: left;
-    /* margin-right: 130px; */
+    padding-right: 30px;
 }
 .left-box{
     margin-left:130px; 
+    padding-right: 60px;
 }
 .left-right,.right-left{
     position: relative;
@@ -157,6 +153,7 @@ button:focus{
     width: 170px;
     height: 192px;
     font-size: 12px;
+    margin-top: 68px;
 }
 .left-right{
     float: right;
@@ -200,4 +197,170 @@ button:focus{
 }
 button:focus{
     outline: 0;
+}
+.next-btn{
+    cursor: pointer;   
+}
+.next-btn:focus{
+    outline: 0;
+}
+
+.next-top-img{
+    margin-top:120px;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.pagination{
+    position: relative;
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+    top: -780px;
+}
+.pagination span:focus{
+    outline: 0;
+}
+.pagination span{
+    cursor: pointer;
+    display: inline-block;
+    width: 30px;
+    height: 28px;
+    margin: 0 20px;
+    border-radius: 0;
+    font-size: 12px;
+    background: #fff;
+    text-align: center;
+}
+
+.my-bullet{
+    color: #888;
+}
+.my-bullet-active{
+    border-bottom: 1px solid black;
+    color:black;
+}
+
+.swiper-include1{
+    width: 100%;
+    height: 367px;
+    text-align: center;
+    margin-top:100px;
+    z-index: 10000;
+}
+.include{
+    width:212px;
+    height: 367px;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.include img{
+    width: 113px;
+    height: 330px;
+    position: absolute;
+}
+.to-left{
+    left: 20%;
+    top: 0;
+}
+.to-right{
+    left:40%;
+    top: 0;
+}
+
+/* .include:hover .to-left{
+    left: 15%;
+    top: 0;
+}
+.include:hover .to-right{
+    left:45%;
+    top: 0;
+} */
+.include-text{
+    position: absolute;
+    bottom: 0;
+    left: 40%;
+    font-size: 12px;
+}
+.include-left:hover .include-text{
+    color: rgb(64, 120, 240)
+}
+.include-right:hover .include-text{
+    color: rgb(64, 120, 240)
+}
+.include-center:hover .include-text{
+    color: rgb(64, 120, 240)
+}
+
+.include-fade-pagination{
+    position: relative;
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+    top: -460px;
+}
+.include-bullet{
+    border:1px solid #d2d2d2;
+    width: 76px;
+    height: 20px;
+    cursor: pointer;
+    display: inline-block;
+    line-height: 18px;
+    border-radius: 0;
+    font-size: 10px;
+    background: #fff;
+    text-align: center;
+}
+.include-bullet-active{
+    border:1px solid rgb(64, 120, 240);
+}
+.pagination-not span{
+    cursor:default;
+}
+.large{
+    text-align: center;
+}
+.phone-large{
+    border: 1px solid #d2d2d2;
+    border-radius: 3px;
+    height: 106px;
+    width: 196px;
+    margin:30px 0px;
+}
+.phone-large:hover{
+    border: 1px solid black;
+}
+.phone-large div{
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 12px;
+}
+.phone-large p{
+    color: #928f8f;
+    font-size: 12px;
+}
+.phone-large span{
+    color: black;
+    font-size: 14px;
+}
+.large-text{
+    font-size: 12px;
+}
+.link-add{
+    display: block;
+    color: rgb(54, 116, 231);
+    width: 100%;
+    height: 20px;
+    font-size: 16px;
+}
+.help{
+    margin-top:30px;    
+    color: black;
+}
+.help a{
+    color: rgb(54, 116, 231);
 }
