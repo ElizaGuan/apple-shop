@@ -7,6 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../iconfont/iconfont.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.0/css/swiper.min.css">    
     <link rel="stylesheet" href="../css/shopInfor.css">
     <link rel="stylesheet" href="../iconfont/font_5csdd7ycni7/iconfont.css">
 </head>
@@ -52,25 +53,70 @@
                     </div>
                 </div>
 
-                <div class="swiper-container" id="gallery">
+                <div class="swiper-container shop-fade" id="gallery">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="first-title">
-                                    加入 iPhone 年年焕新计划，年年用上新 iPhone。已加入 iPhone 年年焕新计划？看看你是否具备升级换购资格。<a href="">进一步了解</a>
+                        <div class="swiper-slide choose-slide">
+                            <div class="first-title">加入 iPhone 年年焕新计划，年年用上新 iPhone。已加入 iPhone 年年焕新计划？看看你是否具备升级换购资格。<a href="">进一步了解</a></div>
+                            <div class="choose-top-img"><img src="../myImg/first-text.png" alt=""></div>
+                            <div class="left-box">
+                                <div class="left-left">
+                                    <img src="../myImg/left-img.png" alt="">
+                                    <button class="choose-left-btn">选择</button>
+                                    <p>更有分期付款选择</p>
+                                    <p>RMB 8699</p>
+                                    <p>起售</p>
+                                </div>
+                                <div class="left-right">
+                                    <img class="left-choose-img" src="../myImg/iphone-xs-1.jpg" alt="">
+                                    <img class="center-choose-img" src="../myImg/iphone-xs-2.png" alt="">
+                                    <img class="right-choose-img" src="../myImg/iphone-xs-3.png" alt="">                                    
+                                </div>
+                            </div>
+                            <div class="right-box">
+                                <div class="right-left">
+                                    <img class="left-choose-img" src="../myImg/iphone-xs-max-1.jpg" alt="">
+                                    <img class="center-choose-img" src="../myImg/iphone-xs-max-2.png" alt="">
+                                    <img class="right-choose-img" src="../myImg/iphone-xs-max-3.png" alt="">                                    
+                                </div>
+                                <div class="right-right">
+                                    <img  src="../myImg/right-img.png" alt="">
+                                    <button class="choose-right-btn">选择</button>
+                                    <p>更有分期付款选择</p>
+                                    <p>RMB 9599</p>
+                                    <p>起售</p>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="swiper-slide">
+                        <div class="swiper-slide choose-slide">
                             
                         </div>
 
-                        <div class="swiper-slide">
+                        <div class="swiper-slide choose-slide">
                             
                         </div>
                     </div>
-                    <div class="swiper-button-next"></div>
+                    <!-- <div class="swiper-button-next" style="top: 10px"></div>
+                    <div class="swiper-button-next"></div> -->
+                    
                 </div>
-
+                
+                <div class="swiper-container" id="thumbs">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                
+                            </div>
+    
+                            <div class="swiper-slide">
+                                
+                            </div>
+    
+                            <div class="swiper-slide">
+                                
+                            </div>
+                        </div>
+                        <div class="swiper-button-next"></div>
+                    </div>
 
                 <div class="first-choose">
 
@@ -131,12 +177,48 @@
     <script src="../js/ajax.js"></script> 
     <script src="../js/shopInfor.js"></script>
     <script type="text/javascript">
-        // $('.head').load('public.html .header'); 
+        // $('.head').load('public.html .header',function(){
+
+        // }); 
         // $('.foot').load('public.html .footer');  
 
         inProject.init('.head')
-        shopInfor_fade.init();  
+        shopInfor_fade.init();
         
-        </script>
+        
+        var thumbsSwiper = new Swiper('#thumbs', {
+            spaceBetween: 10, //小图片中间的间距
+            slidesPerView: 4, // 一次展示四张
+            loop: true, // 循环
+            freeMode: true, // 回弹, 可以移动多张
+            loopedSlides: 4, //looped slides should be the same
+            watchSlidesVisibility: true,
+            watchSlidesProgress: true,
+        })
+
+
+        var mySwiper = new Swiper('#gallery', {
+            // slidesPerView: 3, // 同时显示几张
+            // initialSlide: 1, // 默认起始页
+            direction: 'horizontal', // 滚动方向, 默认水平 horizontal, 还有垂直vertical
+            // grabCursor : true, // 图标转换为小手
+            navigation: {
+                nextEl: '.swiper-button-next'
+            }
+        })
+
+        $(document).ready(function(){
+            $('.left-choose-img').stop().animate({
+                left: 0
+            },1000)
+            $('.center-choose-img').stop().animate({
+                left: 50
+            },1000)
+            $('.right-choose-img').stop().animate({
+                left: 100,
+
+            },1000)
+        });
+    </script>
 </body>
 </html>
