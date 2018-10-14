@@ -221,16 +221,20 @@ button:focus{
 .pagination span:focus{
     outline: 0;
 }
+.pagination span li{
+    outline: 0;
+}
 .pagination span{
     cursor: pointer;
     display: inline-block;
-    width: 30px;
-    height: 28px;
+    width: 60px;
+    height: 30px;
     margin: 0 20px;
     border-radius: 0;
     font-size: 12px;
     background: #fff;
     text-align: center;
+    padding: 5px;
 }
 
 .my-bullet{
@@ -238,7 +242,11 @@ button:focus{
 }
 .my-bullet-active{
     border-bottom: 1px solid black;
+    height: 28px;
     color:black;
+    width: 30px;
+    background: #fff;
+    border-radius: 0;    
 }
 
 .swiper-include1{
@@ -363,4 +371,13 @@ button:focus{
 }
 .help a{
     color: rgb(54, 116, 231);
+}
+
+
+
+.pre-bullet{
+    color: rgb(83, 134, 243);
+    background: #fff;
+    border: none;
+    width: 70px;
 }

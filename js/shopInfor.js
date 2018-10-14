@@ -14,7 +14,7 @@ var mySwiper = new Swiper('#gallery', {
     },
     pagination: {
         el: '.pagination',
-        // clickable: true,
+        clickable: true,
         noSwiping : true,//无法拖动        
         bulletActiveClass: 'my-bullet-active',
         bulletClass: 'my-bullet',//如果没有加这个,字体颜色将无法改变
@@ -23,13 +23,14 @@ var mySwiper = new Swiper('#gallery', {
                 case 0: text = '机型'; break;
                 case 1: text = '外观'; break;
                 case 2: text = '容量'; break;
-                case 3: text = ''; break;                
+                case 3: text = '手机'; break;                
             }
-            return '<span class="' + className + '">' + text + '</span>';
+            return '<span><li class="' + className + '">' + text + '</li></span>';
         },
     },
 
 })
+console.log(mySwiper.pagination.renderBullet)
 var swiperV = new Swiper('#include-fade', {
     speed: 2000,
     effect: 'fade',
@@ -158,7 +159,110 @@ var shopInfor_fade = (function () {
 
 
 
+// for(i=0;i<mySwiper.pagination.bullets.length;i++){
+//     mySwiper.pagination.bullets[i].index=i
+//     mySwiper.pagination.bullets[i].onmouseover=function(){
+//       mySwiper.slideTo(this.index);
+//     };
+//   }
 
-
+var fadeEvent = (function () {
+    $next=$('.next-btn')
+    $leftBox=$('.left-box')
+    $rightBox=$('.right-box') 
+    $includeLeft=$('.include-left')
+    $includeCenter=$('.include-center') 
+    $includeRight=$('.include-right') 
+    $phoneLarge1 =$('.phone-large1')   
+    $phoneLarge2 =$('.phone-large2')   
+    $phoneLarge3 =$('.phone-large3')   
+    $pagination=$('.pagination');
+    var  obj={
+        type:{
+            type1:'iPhone xs',
+            type2:'iPhone Max'
+        },
+        color:{
+            color1:'银色',
+            color2:'深空灰色',
+            color3:'金色'
+        },
+        large:{
+            large1:'64GB',
+            large2:'256GB',
+            large3:'512GB'
+        }
+    }
+    var type =obj.type;
+    var color =obj.color;
+    var large=obj.large;
+    var bullet1=mySwiper.pagination.bullets[0].parentNode;
+    var bullet2=mySwiper.pagination.bullets[1].parentNode;
+    var bullet3=mySwiper.pagination.bullets[2].parentNode;
+    return {
+        init() {
+            this.event();
+            this.getShopListData();
+        },
+        event() {
+            var _this=this;
+            // $pagination.on('click',function(){
+            //     var first=mySwiper.pagination.$el[0].children[0].children[0]
+            //     // $('.box').toggleClass('move');
+            //     // $('.box').toggleClass('active');
+            //     first.innerHTML='<button class="my-bullet pre-bullet" tabindex="0" role="button"   aria-label="Go to slide 1">类型</button>';
+            //     // first.className='.my-bullet-active'
+            //     var second=mySwiper.pagination.$el[0].children[1].children[0]
+            //     console.log(mySwiper.pagination.$el[0].children[1].children[0])
+            //     second.innerHTML='<button class="my-bullet pre-bullet" tabindex="0" role="button"   aria-label="Go to slide 1">外观</button>';
+                                
+            // })
+            //类型
+            $leftBox.on('click',function(){
+                _this.bulletsChange(0,type.type1)
+            })
+            $rightBox.on('click',function(){
+                _this.bulletsChange(0,type.type2)
+            })
+            $includeLeft.on('click',function(){
+                _this.bulletsChange(1,color.color1)
+            })
+            //颜色
+            $includeCenter.on('click',function(){
+                _this.bulletsChange(1,color.color2)
+            })
+            $includeRight.on('click',function(){
+                _this.bulletsChange(1,color.color3)
+            })
+            //大小
+            $phoneLarge1.on('click',function(){
+                _this.bulletsChange(2,large.large1)
+            })
+            $phoneLarge2.on('click',function(){
+                _this.bulletsChange(2,large.large2)
+            })
+            $phoneLarge3.on('click',function(){
+                _this.bulletsChange(2,large.large3)
+            })
+            
+            
+        },
+        bulletsChange(i,type){
+            mySwiper.pagination.bullets[i].parentNode.innerHTML=`<button class="my-bullet pre-bullet" tabindex="0" role="button"   aria-label="Go to slide 1">${type}</button>`
+        },
+        getShopListData: function(){
+            debugger
+            var _this = this;
+            var params = {
+                success: function(data) {
+                    console.log(data)
+                    data = JSON.parse(data);
+                    _this.insertShopList(data.data);
+                }
+            }
+            sendAjax('../json/jsonList.json', params);
+        },
+    }
+}())
 
 
