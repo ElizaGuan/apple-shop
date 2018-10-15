@@ -130,14 +130,14 @@
     min-height: 330px;
 }
 .car-null{
-    display: none;
+    display: block;
 }
 .car-full .shop-list{
     width: 924px;
-    min-height: 190px;
+    min-height: 140px;
     /* border-top: 1px solid #b6b6b6; */
     margin: 0 auto;
-    border-bottom: 1px solid #b6b6b6;        
+    /* border-bottom: 1px solid #b6b6b6;         */
 }
 .list-box{
     border-bottom: 1px solid #b6b6b6; 
@@ -195,7 +195,7 @@
     outline: 0
 }
 .total{
-    height: 142px;
+    height: 140px;
     width: 924px;
     margin: 0 auto;
     clear: both;

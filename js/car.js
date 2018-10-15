@@ -2,26 +2,23 @@ var car = (function () {
     $welcome = $('.welcome');
     $carNull = $('.car-null');
     $carFull = $('.car-full');
-    $shopList = $('.shop-list')    
+    $shopList = $('.shop-list')
     $shopShop = $('.shop-shop')
     $totalPrice = $('.phone-price')
     return {
         init() {
             this.event();
+            this.display();
+            this.getShopListData();
             if (localStorage.email != '') {
                 this.success();
             }
-            this.getShopListData();
         },
         event() {
             var _this = this;
-
-
         },
         success() {
             $welcome[0].innerHTML = `欢迎 ${localStorage.email}`
-            $carNull[0].style.display = 'block';
-            $carFull[0].style.display = 'none';
         },
         getShopListData: function () {
             var _this = this;
@@ -29,9 +26,10 @@ var car = (function () {
                 success: function (data) {
                     data = JSON.parse(data);
                     _this.shopList = data.data;
+                    _this.display();
                     _this.getCarList();
-                    $carNull[0].style.display = 'none';
-                    $carFull[0].style.display = 'block';
+                    // $carNull[0].style.display = 'none';
+                    // $carFull[0].style.display = 'block';
                 }
             }
             sendAjax('../json/shopList.json', params);
@@ -52,11 +50,12 @@ var car = (function () {
                     }
                 }
             }
-            // console.log(this.carList);//{id,color,name,count,price}
+            console.log(typeof JSON.stringify(this.carList[0]));//{id,color,name,count,price}
             // console.log(localStorage.shopList);
 
             this.countPrice(this.carList);
             this.insertCarList(this.carList);
+            this.totalPrice(JSON.stringify(this.carList))
         },
         insertCarList: function (data) {
             var _this = this;
@@ -97,43 +96,80 @@ var car = (function () {
                 var $number = $('.number');
                 var $priceAdd = $('.price-add')
                 // console.log($delBtn[i])
-                $number[0].onclick = function () {
-                    $priceAdd[0].innerHTML = ($number[0].value) * ($price[0].innerHTML)
-                    $totalPrice[0].innerHTML = $priceAdd[0].innerHTML
-                }
+
                 var $price = $('.price')
-                $totalPrice[0].innerHTML = $priceAdd[0].innerHTML
+                // $totalPrice[0].innerHTML = $priceAdd[0].innerHTML;
 
                 for (let j = 0; j < $delBtn.length; j++) {
                     $delBtn[j].onclick = function () {
+                        debugger
+                        _this.totalPrice($priceAdd);                        
                         $shopList[0].removeChild($listBox[j])
-                        console.log($shopShop[0].innerHTML=='')
-                        if ($shopShop[0].innerHTML=='') {
-                            console.log(121)
-                            $carNull[0].style.display = 'block';
-                            $carFull[0].style.display = 'none';
+                        var shopList = JSON.parse(localStorage.getItem('shopList'));
+                        shopList.splice(j, 1);
+                        localStorage.setItem('shopList', JSON.stringify(shopList))
+                        if (j == $delBtn.length - 1) {
+                            location.href = 'car.html';
                         }
                     }
+                    this.display();
+                    $number[j].onchange = function () {
+                        $priceAdd[j].innerHTML = ($number[j].value) * ($price[j].innerHTML)
+                        var shopList = JSON.parse(localStorage.getItem('shopList'))
+                        for (var m = 0; m < shopList.length; m++) {
+                            shopList[m].count = $number[j].value;
+                        }
+                        localStorage.setItem('shopList', JSON.stringify(shopList))
+                        _this.totalPrice($priceAdd);
+                        console.log(typeof $priceAdd)
+                    }
                 }
-                
-                // var $color = $('.color')
-                // var $phoneImg = $('.my-phone')
-                // // for (var j = 0; j < i; j++) {
-                // //     console.log($number[j])
 
-                // //     // if(data[i].color=='银色'){
-                // //     //     $phoneImg[i].src='../myImg/iphone-xs-silver-AV3.jpg'
-                // //     // }
-                // //     // if(data[i].color=='深空灰色'){
-                // //     //     $phoneImg[i].src='../myImg/iphone-xs-_AV3.jpg'
-                // //     // }
-                // //     //  if($color[0].innerHTML=='金色')
-                // //     //  {
-                // //     //     $phoneImg[i].src='../myImg/iphone-xs-gold-AV3.jpg'
-                // //     // }
-                // // }
+                var $color = $('.color')
+                var $phoneImg = $('.my-phone')
+                for (var j = 0; j < i; j++) {
+                    // console.log($number[j])
+
+                    // if(data[i].color=='银色'){
+                    //     $phoneImg[i].src='../myImg/iphone-xs-silver-AV3.jpg'
+                    // }
+                    // if(data[i].color=='深空灰色'){
+                    //     $phoneImg[i].src='../myImg/iphone-xs-_AV3.jpg'
+                    // }
+                    //  if($color[0].innerHTML=='金色')
+                    //  {
+                    //     $phoneImg[i].src='../myImg/iphone-xs-gold-AV3.jpg'
+                    // }
+                }
             }
 
+        },
+        display() {
+            if (localStorage.shopList == '[]') {
+                $carNull[0].style.display = 'block';
+                $carFull[0].style.display = 'none';
+            } else {
+                $carNull[0].style.display = 'none';
+            }
+        },
+        totalPrice(params) {
+            var sum = 0;
+            //用来检测传进来的实参类型
+            if(typeof params =='object'){
+                for (var k = 0; k < params.length; k++) {
+                    sum += Number(params[k].innerHTML)
+                    $totalPrice[0].innerHTML = sum
+                }
+            }else{
+                params=JSON.parse(params)
+                console.log(params)                                    
+                // console.log(params[0].countPrice)
+                for(var i = 0; i < params.length; i++){
+                    sum += params[i].countPrice
+                    console.log(sum)                    
+                    $totalPrice[0].innerHTML = sum
+                }
+            }
         }
     }
 }())
