@@ -36,6 +36,7 @@ var inProject = (function () {
             }
             this.$success.onclick=function(){
                 localStorage.setItem('email','');
+                localStorage.setItem('shopList','');
             }
             this.$first.onclick = function () {
                 location.href = 'index.html'

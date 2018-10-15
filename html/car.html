@@ -58,7 +58,45 @@
                                                 <p>如果禁用了 Cookie，请启用接受 Cookie，然后再试一次。</p>
                                         </div>
                                 </div>
-                                <div class="car-full"></div>
+                                <div class="car-full">
+                                        <div class="shop-list shop-shop">
+                                                <!-- <div class="phone-img">
+                                                        11<img class="my-phone" src="" alt="">
+                                                </div>
+                                                <div class="phone-infor">
+                                                        <div class="phone-infor-top">
+                                                                <h6>
+                                                                        <b class="type">iphone xs</b>
+                                                                        <b class="large">64GB</b>
+                                                                        <b class="color">金色</b>                                                                
+                                                                </h6>
+                                                                <i class="price">RMB</i>
+                                                                <input class="number" type="number">
+                                                                <b class="price-add">RMB</b>
+                                                        </div>
+                                                        <div class="phone-infor-bottom">
+                                                                <div class="date">送达日期:有现货</div>
+                                                                <button class="del-btn">删除</button>
+                                                        </div>
+                                                </div> -->
+                                                
+                                        </div>
+                                        <div class="shop-total shop-list">
+                                                <div class="total">
+                                                        <div class="total-box">
+                                                                <div class="send">
+                                                                        <b>免费送货</b>
+                                                                        <span>RMB 0</span>
+                                                                </div>
+                                                                <div class="total-price">
+                                                                        <b>总计  </b>
+                                                                        <b class="phone-price"></b>
+                                                                        <p class="total-text">更有分期付款</p>
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
                         </div>
                         <div class="car-list-bottom">
                                 <div class="bottom-null">
@@ -66,7 +104,7 @@
                                                 <a href="" style="border-right: 1px solid #b2b2b2">选购配件</a>
                                                 <a href="">查看已保存的购物袋</a>
                                         </p>
-                                        <button><i class="iconfont icon-fangzi1"></i>继续购物</button>
+                                        <button><i class="iconfont icon-fangzi1"></i>结账</button>
                                 </div>
                         </div>
                 </div>
@@ -202,11 +240,13 @@
         </div>
 
 </footer>
+<script src="../js/jquery.js"></script>
 <script src="../js/project.js"></script>
 <script src="../js/car.js"></script>
+<script src="../js/ajax.2.js"></script>
 <script>
         inProject.init('.head')
-        car.init('.car-center .car-border')
+        car.init()
 </script>
 
 

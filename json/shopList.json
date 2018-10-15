@@ -11,6 +11,30 @@
             "name": "iPhone Max",
             "large":"64GB",
             "price": 9599
+        },
+        {
+            "id": 3,
+            "name": "iPhone xs",
+            "large":"256GB",
+            "price": 10099
+        },
+        {
+            "id": 4,
+            "name": "iPhone Max",
+            "large":"256GB",
+            "price": 10999
+        },
+        {
+            "id": 5,
+            "name": "iPhone xs",
+            "large":"512GB",
+            "price": 11899
+        },
+        {
+            "id": 6,
+            "name": "iPhone Max",
+            "large":"512GB",
+            "price": 12799
         }
     ]
 }

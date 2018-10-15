@@ -1,23 +1,139 @@
-var car=(function(){
+var car = (function () {
+    $welcome = $('.welcome');
+    $carNull = $('.car-null');
+    $carFull = $('.car-full');
+    $shopList = $('.shop-list')    
+    $shopShop = $('.shop-shop')
+    $totalPrice = $('.phone-price')
     return {
-        init(ele){
-            this.ele=ele;
-            this.$welcome = this.$('.welcome');
+        init() {
             this.event();
-            if (localStorage.email!='') {
+            if (localStorage.email != '') {
                 this.success();
             }
+            this.getShopListData();
         },
-        event(){
+        event() {
+            var _this = this;
+
 
         },
-        $(id){
-            return document.querySelector(id);
+        success() {
+            $welcome[0].innerHTML = `欢迎 ${localStorage.email}`
+            $carNull[0].style.display = 'block';
+            $carFull[0].style.display = 'none';
         },
-        success(){
-             
-            console.log(localStorage.email)
-            this.$welcome.innerHTML = `欢迎 ${localStorage.email}`
+        getShopListData: function () {
+            var _this = this;
+            var params = {
+                success: function (data) {
+                    data = JSON.parse(data);
+                    _this.shopList = data.data;
+                    _this.getCarList();
+                    $carNull[0].style.display = 'none';
+                    $carFull[0].style.display = 'block';
+                }
+            }
+            sendAjax('../json/shopList.json', params);
+        },
+        countPrice: function (arr) {
+            arr = arr.map(x => {
+                return x.countPrice = x.price * x.count;
+            })
+        },
+        getCarList: function () {
+            // [{id: 1, count:2}, {id: 2, count: 10}]
+            this.carList = JSON.parse(localStorage.shopList);
+            for (var i = 0; i < this.shopList.length; i++) {
+                for (var j = 0; j < this.carList.length; j++) {
+                    if (this.shopList[i].id == this.carList[j].id) {
+                        Object.assign(this.carList[j], this.shopList[i]);
+                        break;
+                    }
+                }
+            }
+            // console.log(this.carList);//{id,color,name,count,price}
+            // console.log(localStorage.shopList);
+
+            this.countPrice(this.carList);
+            this.insertCarList(this.carList);
+        },
+        insertCarList: function (data) {
+            var _this = this;
+            var arr = [];
+            var shop;
+            // debugger
+            // console.log(this.shopList)
+            for (var i = 0; i < data.length; i++) {
+                arr.push(`
+                
+                        <div class="list-box">
+                                <div class="phone-img">
+                                    <img class="my-phone" src="" alt="">
+                                </div>
+                                <div class="phone-infor">
+                                        <div class="phone-infor-top">
+                                                <h6>
+                                                        <b class="type">${data[i].name}</b>
+                                                        <b class="large">${data[i].large}</b>
+                                                        <b class="color">${data[i].color}</b>                                                                
+                                                </h6>
+                                                <i class="price">${data[i].price}</i>
+                                                <input class="number" type="number" pattern="[0-9]*" min="0" max="10" value="${data[i].count}">
+                                                <b class="price-add">${data[i].countPrice}</b>
+                                        </div>
+                                        <div class="phone-infor-bottom">
+                                                <div class="date">送达日期:有现货</div>
+                                                <button class="del-btn"  attr-index="${i}">删除</button>
+                                        </div>
+                                </div>
+                        </div>
+                
+                `);
+
+                $shopShop[0].innerHTML = arr.join('');
+                var $listBox = $('.list-box')
+                var $delBtn = $('.del-btn')
+                var $number = $('.number');
+                var $priceAdd = $('.price-add')
+                // console.log($delBtn[i])
+                $number[0].onclick = function () {
+                    $priceAdd[0].innerHTML = ($number[0].value) * ($price[0].innerHTML)
+                    $totalPrice[0].innerHTML = $priceAdd[0].innerHTML
+                }
+                var $price = $('.price')
+                $totalPrice[0].innerHTML = $priceAdd[0].innerHTML
+
+                for (let j = 0; j < $delBtn.length; j++) {
+                    $delBtn[j].onclick = function () {
+                        $shopList[0].removeChild($listBox[j])
+                        console.log($shopShop[0].innerHTML=='')
+                        if ($shopShop[0].innerHTML=='') {
+                            console.log(121)
+                            $carNull[0].style.display = 'block';
+                            $carFull[0].style.display = 'none';
+                        }
+                    }
+                }
+                
+                // var $color = $('.color')
+                // var $phoneImg = $('.my-phone')
+                // // for (var j = 0; j < i; j++) {
+                // //     console.log($number[j])
+
+                // //     // if(data[i].color=='银色'){
+                // //     //     $phoneImg[i].src='../myImg/iphone-xs-silver-AV3.jpg'
+                // //     // }
+                // //     // if(data[i].color=='深空灰色'){
+                // //     //     $phoneImg[i].src='../myImg/iphone-xs-_AV3.jpg'
+                // //     // }
+                // //     //  if($color[0].innerHTML=='金色')
+                // //     //  {
+                // //     //     $phoneImg[i].src='../myImg/iphone-xs-gold-AV3.jpg'
+                // //     // }
+                // // }
+            }
+
         }
     }
 }())
