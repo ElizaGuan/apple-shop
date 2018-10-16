@@ -85,9 +85,10 @@
     border:1px solid #b2b2b2;
     border-radius: 4px;
     background: none;
+}
+.car-list-bottom button a{
     color:#0094dd !important;
 }
-
 
 
 
@@ -146,6 +147,8 @@
 .phone-img{
     float: left;
     width: 216px;
+    padding-top: 54px;
+    text-align: center;
 }
 .my-phone{
     width: 110px;

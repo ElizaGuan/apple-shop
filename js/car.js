@@ -5,6 +5,8 @@ var car = (function () {
     $shopList = $('.shop-list')
     $shopShop = $('.shop-shop')
     $totalPrice = $('.phone-price')
+    $sureNull=$('.car-sure-null')
+    $pay=$('.pay')
     return {
         init() {
             this.event();
@@ -18,7 +20,11 @@ var car = (function () {
             var _this = this;
         },
         success() {
+            console.log($pay[0])
             $welcome[0].innerHTML = `欢迎 ${localStorage.email}`
+            $sureNull[0].style.display='none'
+            $pay[0].innerHTML='结账';
+            $pay.css({"background":"#0094dd","color":"#fff","font-size":"16px"})
         },
         getShopListData: function () {
             var _this = this;
@@ -127,19 +133,19 @@ var car = (function () {
 
                 var $color = $('.color')
                 var $phoneImg = $('.my-phone')
-                for (var j = 0; j < i; j++) {
+                for (var j = 0; j < $listBox.length; j++) {
                     // console.log($number[j])
 
-                    // if(data[i].color=='银色'){
-                    //     $phoneImg[i].src='../myImg/iphone-xs-silver-AV3.jpg'
-                    // }
-                    // if(data[i].color=='深空灰色'){
-                    //     $phoneImg[i].src='../myImg/iphone-xs-_AV3.jpg'
-                    // }
-                    //  if($color[0].innerHTML=='金色')
-                    //  {
-                    //     $phoneImg[i].src='../myImg/iphone-xs-gold-AV3.jpg'
-                    // }
+                    if($color[j].innerHTML=='银色'){
+                        $phoneImg[j].src='../myImg/xs-silver.jpg'
+                    }
+                    if($color[j].innerHTML=='深空灰色'){
+                        $phoneImg[j].src='../myImg/xs-gray.jpg'
+                    }
+                     if($color[j].innerHTML=='金色')
+                     {
+                        $phoneImg[j].src='../myImg/xs-gold.jpg'
+                    }
                 }
             }
 
@@ -148,6 +154,7 @@ var car = (function () {
             if (localStorage.shopList == '[]') {
                 $carNull[0].style.display = 'block';
                 $carFull[0].style.display = 'none';
+                $pay[0].innerHTML='继续购物';
             } else {
                 $carNull[0].style.display = 'none';
             }

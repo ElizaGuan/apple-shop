@@ -161,6 +161,7 @@ var shopInfor_fade = (function () {
 
 
 var fadeEvent = (function () {
+    // $love=$('.love')
     $next = $('.next-btn')
     $leftBox = $('.left-box')
     $rightBox = $('.right-box')
@@ -291,5 +292,3 @@ var fadeEvent = (function () {
         }
     }
 }())
-
-
