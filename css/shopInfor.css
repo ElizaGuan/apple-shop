@@ -283,14 +283,7 @@ button:focus{
     top: 0;
 }
 
-/* .include:hover .to-left{
-    left: 15%;
-    top: 0;
-}
-.include:hover .to-right{
-    left:45%;
-    top: 0;
-} */
+
 .include-text{
     position: absolute;
     bottom: 0;

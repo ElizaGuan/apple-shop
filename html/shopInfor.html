@@ -6,36 +6,35 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../iconfont/iconfont.css">
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.0/css/swiper.min.css">    
     <link rel="stylesheet" href="../css/shopInfor.css">
-    <link rel="stylesheet" href="../iconfont/font_5csdd7ycni7/iconfont.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_855947_0dh7vxjyl8oj.css">
 </head>
 <body>
-        <header class="head">
-            <nav class="down">
-                    <li class="iconfont icon-iphone"></li>                        
-                    <li>Mac</li>
-                    <li>iPad</li>
-                    <li>iPhone</li>
-                    <li>Watch</li>
-                    <li>Music</li>
-                    <li>技术支持</li>
-                    <li class="iconfont icon-sousuo"></li>
-                    <li class="iconfont icon-gouwudai last_nav"></li>
-                </nav>
-                <div class="menu">
-                    <p>你的购物袋是空的</p>
-                    <div class="up"></div>
-                    <ol>
-                        <li><i class="iconfont icon-gouwudai"></i><a href="car.html">购物袋</a></li>
-                        <li><i class="iconfont icon-shoucang"></i><a href="">收藏</a></li>
-                        <li><i class="iconfont icon-box"></i><a href="">订单</a></li>
-                        <li><i class="iconfont icon-shezhi"></i><a href="createID.html">账号</a></li>
-                        <li><i class="iconfont icon-guanwangicon31334"></i><a href="inProject.html" class="success">登陆</a></li>
-                    </ol>
-                </div>
-        </header>
+    <header class="head">
+        <nav class="down">
+                <li class="iconfont icon-iphone"></li>
+                <li>Mac</li>
+                <li>iPad</li>
+                <li>iPhone</li>
+                <li>Watch</li>
+                <li>Music</li>
+                <li>技术支持</li>
+                <li class="iconfont icon-sousuo"></li>
+                <li class="iconfont icon-gouwudai last_nav"></li>
+            </nav>
+            <div class="menu">
+                <p>你的购物袋是空的</p>
+                <div class="up"></div>
+                <ol>
+                    <li><i class="iconfont icon-gouwudai"></i><a href="">购物袋</a></li>
+                    <li><i class="iconfont icon-weibiaoti30"></i><a href="">收藏</a></li>
+                    <li><i class="iconfont icon-dingdan"></i><a href="">订单</a></li>
+                    <li><i class="iconfont icon-shezhi"></i><a href="">账号</a></li>
+                    <li><i class="iconfont icon-guanwangicon31334"></i><a href="inProject.html"  class="success">登陆</a></li>
+                </ol>
+            </div>
+</header>
 
         <section>
             <main class="shop-main">
@@ -260,13 +259,60 @@
     <script src="../js/ajax.2.js"></script>
     <script type="text/javascript">
         // $('.head').load('public.html .header',function(){
-
+        inProject.init('.head')
+var mySwiper = new Swiper('#gallery', {
+    speed: 1500,
+    autoHeight: true,//高度可调
+    effect: 'fade',
+    fadeEffect: {
+        crossFade: true,
+    },
+    navigation: {
+        nextEl: '.next-btn'
+    },
+    pagination: {
+        el: '.pagination',
+        clickable: true,
+        noSwiping: true,//无法拖动        
+        bulletActiveClass: 'my-bullet-active',
+        bulletClass: 'my-bullet',
+        renderBullet: function (index, className) {
+            switch (index) {
+                case 0: text = '机型'; break;
+                case 1: text = '外观'; break;
+                case 2: text = '容量'; break;
+                case 3: text = '手机'; break;
+            }
+            return '<span><li class="' + className + '">' + text + '</li></span>';
+        },
+    },
+})
+var swiperV = new Swiper('#include-fade', {
+    speed: 1500,
+    effect: 'fade',
+    fadeEffect: {
+        crossFade: true,
+    },
+    pagination: {
+        el: '.include-fade-pagination',
+        clickable: true,
+        noSwiping: true,//无法拖动
+        bulletClass: 'include-bullet',     
+        bulletActiveClass: 'include-bullet-active',
+        renderBullet: function (index, className) {
+            switch (index) {
+                case 0: text = '查看正面'; break;
+                case 1: text = '查看背面'; break;
+            }
+            return '<span class="' + className + '">' + text + '</span>';
+        },
+    },
+});
         // }); 
         // $('.foot').load('public.html .footer');  
 
-        inProject.init('.head')
-        shopInfor_fade.init();
         fadeEvent.init();
+        shopInfor_fade.init();
         
       
 

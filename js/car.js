@@ -1,12 +1,12 @@
 var car = (function () {
-    $welcome = $('.welcome');
-    $carNull = $('.car-null');
-    $carFull = $('.car-full');
-    $shopList = $('.shop-list')
-    $shopShop = $('.shop-shop')
-    $totalPrice = $('.phone-price')
-    $sureNull=$('.car-sure-null')
-    $pay=$('.pay')
+    var $welcome = $('.welcome');
+    var $carNull = $('.car-null');
+    var $carFull = $('.car-full');
+    var $shopList = $('.shop-list')
+    var $shopShop = $('.shop-shop')
+    var $totalPrice = $('.phone-price')
+    var $sureNull=$('.car-sure-null')
+    var $pay=$('.pay')
     return {
         init() {
             this.event();
@@ -155,6 +155,9 @@ var car = (function () {
                 $carNull[0].style.display = 'block';
                 $carFull[0].style.display = 'none';
                 $pay[0].innerHTML='继续购物';
+                $pay.on('click',function(){
+                    location.href='shopInfor.html'
+                })
             } else {
                 $carNull[0].style.display = 'none';
             }

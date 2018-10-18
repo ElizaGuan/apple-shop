@@ -20,8 +20,8 @@ var inProject = (function () {
             var _this = this;
             this.$last.onclick = function (e) {
                 e.stopPropagation();
-                val = this.val;
-                val = 'none';
+                _this.val = this.val;
+                _this.val = 'none';
                 e = e || window.event;
                 if (_this.flag) {
                     _this.$menu.style.display = 'block';
